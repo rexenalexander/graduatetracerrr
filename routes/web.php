@@ -29,7 +29,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/check-log', function () {
-    return response()->file(storage_path('logs/laravel.log'));
+    return nl2br(file_get_contents(storage_path('logs/laravel.log')));
 });
 
 Route::get('/forgot-pass', [LoginController::class, 'index'])->name('forgot-pass');
