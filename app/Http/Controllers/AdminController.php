@@ -405,6 +405,7 @@ class AdminController extends Controller
             return redirect()->route('admin.graduates')->with('error', 'Empty or Invalid Graduate Email List!');
         }
 
+        try {
         foreach ($graduateList as $grad) {
             if ($grad->firstname && $grad->default_password && $grad->email) {
                 $email = $grad->email;
@@ -422,6 +423,10 @@ class AdminController extends Controller
             }
         }
         return redirect()->route('admin.graduates')->with('success', 'Graduate notifications queued successfully.');
+        }
+        catch (\Exception $e) {
+                return redirect()->route('admin.graduates')->with('error', 'Something went wrong'. $e->getMessage());
+        }
     }
 
     public function clearjobs(Request $request)
