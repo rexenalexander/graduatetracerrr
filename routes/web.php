@@ -28,6 +28,10 @@ Route::get('/login', function () {
     return view('auth.login', ['isAdmin' => true]);
 })->name('login');
 
+Route::get('/check-log', function () {
+    return response()->file(storage_path('logs/laravel.log'));
+});
+
 Route::get('/forgot-pass', [LoginController::class, 'index'])->name('forgot-pass');
 Route::get('/change-pass', [LoginController::class, 'changepass'])->name('change-pass');
 
