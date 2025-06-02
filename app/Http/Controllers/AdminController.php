@@ -371,7 +371,7 @@ class AdminController extends Controller
             if($graduate) {
                 return redirect()->route('admin.notifypage')->with('error', 'There is a problem with your excel file. Please re-check.'. $e->getMessage());
             } else {
-                return redirect()->route('admin.employernotifypage')->with('error', 'There is a problem with your excel file. Please re-check');
+                return redirect()->route('admin.employernotifypage')->with('error', 'There is a problem with your excel file. Please re-check'. $e->getMessage());
             }
         }
 
