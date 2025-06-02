@@ -351,9 +351,9 @@ class AdminController extends Controller
                 Storage::delete($path) || unlink($fullPath);
             } catch (\Exception $e) {
                 if($graduate) {
-                    return redirect()->route('admin.notifypage')->with('error', 'There is a problem with your excel file. Please re-check.');
+                    return redirect()->route('admin.notifypage')->with('error', 'There is a problem with your excel file. Please re-check.' . $e->getMessage());
                 } else {
-                    return redirect()->route('admin.employernotifypage')->with('error', 'There is a problem with your excel file. Please re-check');
+                    return redirect()->route('admin.employernotifypage')->with('error', 'There is a problem with your excel file. Please re-check' . $e->getMessage());
                 }
                 return response()->json(['status' => 500, 'message' => 'Failed to delete uploaded file: ' . $e->getMessage()]);
             }
