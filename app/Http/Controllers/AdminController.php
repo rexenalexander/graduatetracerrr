@@ -374,7 +374,7 @@ class AdminController extends Controller
                 $errorMessage = 'Something went wrong: ' . $e->getMessage()
                 . ' in file ' . $e->getFile()
                 . ' on line ' . $e->getLine();
-                return redirect()->route('admin.employernotifypage')->with('error', 'There is a problem with your excel file. Please re-check'. $errorMessage));
+                return redirect()->route('admin.employernotifypage')->with('error', 'There is a problem with your excel file. Please re-check'. $errorMessage);
             }
         }
 
